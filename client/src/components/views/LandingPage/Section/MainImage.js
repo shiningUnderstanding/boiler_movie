@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 function MainImage(props) {
   useEffect(() => {
     console.log(props);
-  }, []);
+  }, [props]);
   return (
     <div
       style={{

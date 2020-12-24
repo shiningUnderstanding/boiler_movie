@@ -14,6 +14,7 @@ function LandingPage() {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     fetchMovies(endpoint);
     console.log(Movies);
+    // eslint-disable-next-line
   }, []);
 
   const fetchMovies = (endpoint) => {
@@ -39,6 +40,7 @@ function LandingPage() {
       style={{
         width: "100%",
         margin: "0",
+        paddingTop: "5vh",
       }}
     >
       {/* Main Image */}

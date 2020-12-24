@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 import MainImage from "../LandingPage/Section/MainImage";
 import MovieInfo from "./Section/MovieInfo";
 import GridCards from "../common/GridCards";
-import { Row } from "antd";
+import Favorite from "./Section/Favorite";
+import { Row, Button } from "antd";
 
 function MovieDetail(props) {
   let movieId = props.match.params.movieId;
@@ -30,6 +31,7 @@ function MovieDetail(props) {
         console.log("crew : ", response);
         setCasts(response.cast);
       });
+    // eslint-disable-next-line
   }, []);
 
   const toggleActorView = () => {
@@ -37,7 +39,7 @@ function MovieDetail(props) {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "7vh" }}>
       {/* Header */}
       <MainImage
         image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
@@ -46,6 +48,13 @@ function MovieDetail(props) {
       />
       {/* Body */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Favorite
+            movieInfo={Movie}
+            movieId={movieId}
+            userFrom={localStorage.getItem("userId")}
+          />
+        </div>
         {/* Movie Info */}
         <MovieInfo movie={Movie} />
 
@@ -54,7 +63,7 @@ function MovieDetail(props) {
         <div
           style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         >
-          <button onClick={toggleActorView}>Toggle Actor View</button>
+          <Button onClick={toggleActorView}>Toggle Actor View</Button>
         </div>
         {ActorToggle && (
           <Row gutter={[16, 16]}>
