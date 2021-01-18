@@ -50,7 +50,6 @@ function FavoritePage() {
         ) : (
           "no image"
         )}
-        }
       </div>
     );
 
